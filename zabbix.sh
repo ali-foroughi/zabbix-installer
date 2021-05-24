@@ -63,6 +63,8 @@ echo " "
 echo " "
 echo "######## Server info ##########"
 SERVER_PSK=$(cat /etc/zabbix/zabbix_agentd.psk)
+SERVER_HOSTNAME=$(hostname)
 SERVER_IP=$(hostname -i)
+echo "Hostname: $SERVER_HOSTNAME"
 echo "Server IP: $SERVER_IP"
 echo "Server PSK: $SERVER_PSK"
