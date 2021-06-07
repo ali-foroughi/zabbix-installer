@@ -25,7 +25,8 @@ if [ $LOCATION == "ir" ]; then
     TLSPSKIdentity=PSK $NAME
 EOT
     # Add the Zabbix server IP to the CSF configuration
-    echo "tcp|in|d=10050|s=164.138.19.209" >> /etc/csf/csf.allow 
+    echo "tcp|in|d=10050|s=164.138.19.209" >> /etc/csf/csf.allow
+    echo "tcp|out|d=10051|d=164.138.19.209" >> /etc/csf/csf.allow
 
 elif [ $LOCATION == "de" ]; then
     touch /etc/zabbix/zabbix_agentd.conf
@@ -44,6 +45,7 @@ elif [ $LOCATION == "de" ]; then
 EOT
     # Add the Zabbix server IP to the CSF configuration
     echo "tcp|in|d=10050|s=138.201.79.7" >> /etc/csf/csf.allow
+    echo "tcp|out|d=10051|d=138.201.79.7" >> /etc/csf/csf.allow
 
 else 
     echo "Please enter a valid location."
@@ -63,6 +65,8 @@ echo " "
 echo " "
 echo "######## Server info ##########"
 SERVER_PSK=$(cat /etc/zabbix/zabbix_agentd.psk)
+SERVER_HOSTNAME=$(hostname)
 SERVER_IP=$(hostname -i)
+echo "Hostname: $SERVER_HOSTNAME"
 echo "Server IP: $SERVER_IP"
 echo "Server PSK: $SERVER_PSK"
