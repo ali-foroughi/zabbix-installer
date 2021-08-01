@@ -17,3 +17,18 @@ ServerActive=irzbx.rackset.com
 Hostname=$NAME.euhosted.com
 TLSPSKIdentity=PSK $NAME
 EOT
+echo "tcp|in|d=10050|s=164.138.19.209" >> /etc/csf/csf.allow
+echo "tcp|out|d=10051|d=164.138.19.209" >> /etc/csf/csf.allow
+echo "exe:/usr/sbin/zabbix_agentd" >> /etc/csf/csf.pignore
+csf -r &>/dev/null
+systemctl enable zabbix-agent
+systemctl start zabbix-agent
+echo " "
+echo " "
+echo "######## Server info ##########"
+SERVER_PSK=$(cat /etc/zabbix/zabbix_agentd.psk)
+SERVER_HOSTNAME=$(hostname)
+SERVER_IP=$(hostname -i)
+echo "Hostname: $SERVER_HOSTNAME"
+echo "Server IP: $SERVER_IP"
+echo "Server PSK: $SERVER_PSK"
