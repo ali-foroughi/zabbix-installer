@@ -31,4 +31,5 @@ SERVER_HOSTNAME=$(hostname)
 SERVER_IP=$(hostname -i)
 echo "Hostname: $SERVER_HOSTNAME"
 echo "Server IP: $SERVER_IP"
+echo "PSK ID: PSK $NAME"
 echo "Server PSK: $SERVER_PSK"
