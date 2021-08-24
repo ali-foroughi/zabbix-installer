@@ -18,11 +18,11 @@ IR_zabbix_install () {
     		ServerActive=irzbx.rackset.com
     		Hostname=$NAME.euhosted.com
     		TLSPSKIdentity=PSK $NAME
-		EOT
+EOT
     		
     		# Add the Zabbix server IP to the CSF configuration
-    		echo "tcp|in|d=10050|s=164.138.19.209" >> /etc/csf/csf.allow
-    		echo "tcp|out|d=10051|d=164.138.19.209" >> /etc/csf/csf.allow
+    		echo "tcp|in|d=10050|s=185.88.179.41" >> /etc/csf/csf.allow
+    		echo "tcp|out|d=10051|d=185.88.179.41" >> /etc/csf/csf.allow
 }
 
 DE_zabbix_install () {
@@ -39,7 +39,7 @@ DE_zabbix_install () {
 	    	ServerActive=zabbix.rackset.com
 	    	Hostname=$NAME.euhosted.com
 	    	TLSPSKIdentity=PSK $NAME
-		EOT
+EOT
     		# Add the Zabbix server IP to the CSF configuration
     		echo "tcp|in|d=10050|s=138.201.79.7" >> /etc/csf/csf.allow
     		echo "tcp|out|d=10051|d=138.201.79.7" >> /etc/csf/csf.allow
