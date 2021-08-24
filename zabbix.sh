@@ -2,7 +2,7 @@
 
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
-OsType=&(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
+OsType=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
 
 IR_zabbix_install () {
     		touch /etc/zabbix/zabbix_agentd.conf
