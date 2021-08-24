@@ -67,6 +67,8 @@ elif [ $OsType == "Ubuntu" ] ; then
 	apt update 
 	apt install zabbix-agent
 	rm zabbix-release*
+	sh -c "openssl rand -hex 32 > /etc/zabbix/zabbix_agentd.psk"
+	rm /etc/zabbix/zabbix_agentd.conf
 	
 	if [ $LOCATION == "ir" ]; then
 		IR_server_install
