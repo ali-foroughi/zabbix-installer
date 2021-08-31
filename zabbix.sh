@@ -81,10 +81,10 @@ if [ $OsType == "CentOS" ] ; then
 
 
 	if [ $LOCATION == "ir" ]; then
-		IR_server_install
+		IR_zabbix_install
 
 	elif [ $LOCATION == "de" ]; then
-		DE_server_install
+		DE_zabbix_install
 	else
 		echo "Location is incorrect. Please choose ir/de"
 	fi	
