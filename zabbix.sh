@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 #changed these to server sever IPs
@@ -27,7 +28,7 @@ EOT
 				cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
 PidFile=/run/zabbix/zabbix_agentd.pid
 EOT
-			elif [ $OsType == "CentOs" ] ; then
+			elif [ $OsType == "CentOS" ] ; then
 				cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 EOT
