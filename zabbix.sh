@@ -70,12 +70,7 @@ cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
 PidFile=/run/zabbix/zabbix_agentd.pid
 EOT
 
-elif [ $OSTYPE == "CentOS" ] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/var/run/zabbix/zabbix_agentd.pid
-EOT
-
-elif [ $OSTYPE == "CloudLinux" ] ; then
+elif [[ $OSTYPE == "CentOS" || $OSTYPE == "CloudLinux" ]] ; then
 cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 EOT
@@ -89,7 +84,7 @@ echo "tcp|in|d=10050|s=$DE_IP" >> /etc/csf/csf.allow
 echo "tcp|out|d=10051|d=$DE_IP" >> /etc/csf/csf.allow
 }
 
-if [ $OSTYPE == "CentOS" ] ; then
+if [[ $OSTYPE == "CentOS" || $OSTYPE == "CloudLinux" ]] ; then
 	
 rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
 yum install zabbix-agent -y
