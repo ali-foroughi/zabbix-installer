@@ -1,2 +1,2 @@
 # zabbix-installer
-A script to automatically install and configure zabbix on Ubuntu and CentOS servers.
+A script to automatically install and configure zabbix on Ubuntu, CentOS and CloudLinux servers.
