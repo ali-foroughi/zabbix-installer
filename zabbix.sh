@@ -2,8 +2,8 @@
 #!/bin/bash
 
 #changed these to server sever IPs
-IR_IP="185.88.179.41"
-DE_IP="138.201.79.7"
+IR_IP=""
+DE_IP=""
 
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
