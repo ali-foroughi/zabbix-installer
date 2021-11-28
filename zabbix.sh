@@ -1,98 +1,16 @@
-
 #!/bin/bash
 
-<<<<<<< HEAD
 # Installs Zabbix-agent on Centos,Ubuntu or Cloudlinux servers. Creates the approriate configuration file and;
 # adds required configuration to CSF firewall.
 # It does NOT check whether or CSF is installed.
 
 #change these to zabbix server IP
-=======
-#changed these to server sever IPs
->>>>>>> 4473db1c0a50f3ca85d2e3087abb8fa4c213e70e
 IR_IP=""
 DE_IP=""
 
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
-OSTYPE=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
 
-
-IR_zabbix_install () {
-touch /etc/zabbix/zabbix_agentd.conf
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-LogFile=/var/log/zabbix/zabbix_agentd.log
-LogFileSize=20
-Include=/etc/zabbix/zabbix_agentd.d/*.conf
-TLSConnect=psk
-TLSAccept=psk
-TLSPSKFile=/etc/zabbix/zabbix_agentd.psk
-Server=irzbx.rackset.com
-ServerActive=irzbx.rackset.com
-Hostname=$NAME.euhosted.com
-TLSPSKIdentity=PSK $NAME
-EOT
-            
-if [ $OSTYPE == "Ubuntu" ] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/run/zabbix/zabbix_agentd.pid
-EOT
-
-elif [ $OSTYPE == "CentOS" ] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/var/run/zabbix/zabbix_agentd.pid
-EOT
-
-elif [ $OSTYPE == "CloudLinux" ] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/var/run/zabbix/zabbix_agentd.pid
-EOT
-
-else
-echo "OS type not supported. Please use Ubuntu or CentOS"
-fi
-
-# Add the Zabbix server IP to the CSF configuration
-echo "tcp|in|d=10050|s=$IR_IP" >> /etc/csf/csf.allow
-echo "tcp|out|d=10051|d=$IR_IP" >> /etc/csf/csf.allow
-}
-
-
-DE_zabbix_install () {
-touch /etc/zabbix/zabbix_agentd.conf
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-LogFile=/var/log/zabbix/zabbix_agentd.log
-LogFileSize=20
-Include=/etc/zabbix/zabbix_agentd.d/*.conf
-TLSConnect=psk
-TLSAccept=psk
-TLSPSKFile=/etc/zabbix/zabbix_agentd.psk
-Server=zabbix.rackset.com
-ServerActive=zabbix.rackset.com
-Hostname=$NAME.euhosted.com
-TLSPSKIdentity=PSK $NAME
-EOT
-
-if [ $OSTYPE == "Ubuntu" ] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/run/zabbix/zabbix_agentd.pid
-EOT
-
-elif [[ $OSTYPE == "CentOS" || $OSTYPE == "CloudLinux" ]] ; then
-cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
-PidFile=/var/run/zabbix/zabbix_agentd.pid
-EOT
-
-else
-echo "OS tyoe not supported. Please use Ubuntu or CentOS"
-fi
-
-# Add the Zabbix server IP to the CSF configuration
-echo "tcp|in|d=10050|s=$DE_IP" >> /etc/csf/csf.allow
-echo "tcp|out|d=10051|d=$DE_IP" >> /etc/csf/csf.allow
-}
-
-<<<<<<< HEAD
 # Check OS version
 OSTYPE=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
 
@@ -168,8 +86,6 @@ echo "tcp|in|d=10050|s=$DE_IP" >> /etc/csf/csf.allow
 echo "tcp|out|d=10051|d=$DE_IP" >> /etc/csf/csf.allow
 }
 
-=======
->>>>>>> 4473db1c0a50f3ca85d2e3087abb8fa4c213e70e
 if [[ $OSTYPE == "CentOS" || $OSTYPE == "CloudLinux" ]] ; then
 	
 rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
@@ -184,10 +100,7 @@ rm /etc/zabbix/zabbix_agentd.conf
 		DE_zabbix_install
 	else
 		echo "Location is incorrect. Please choose ir/de"
-<<<<<<< HEAD
 		exit 1
-=======
->>>>>>> 4473db1c0a50f3ca85d2e3087abb8fa4c213e70e
 	fi	
    		
 elif [ $OSTYPE == "Ubuntu" ] ; then
