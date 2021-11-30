@@ -1,8 +1,0 @@
-A script to automatically install Zabbix on CentOS servers and add the needed configurations.
-
-+ The /etc/zabbix/zabbix_agentd.conf file is edited as needed
-+ The CSR firewall is configured
-+ PSK is configured for zabbix
-+ Zabbix starts and PSK and server IP is displayed.
-
-
