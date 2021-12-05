@@ -15,6 +15,8 @@ read -p 'Please specify server location (ir/de):' LOCATION
 OSTYPE=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
 
 
+
+
 IR_zabbix_install () {
 touch /etc/zabbix/zabbix_agentd.conf
 cat <<EOT >> /etc/zabbix/zabbix_agentd.conf
@@ -126,7 +128,7 @@ else
 	echo "OS type not supported"
 fi
 
-
+echo "" >> /etc/csf/csf.pignore
 echo "exe:/usr/sbin/zabbix_agentd" >> /etc/csf/csf.pignore
 
 # Restart CSF
