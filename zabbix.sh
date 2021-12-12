@@ -4,6 +4,20 @@
 # adds required configuration to CSF firewall.
 # It does NOT check whether or CSF is installed.
 
+# Running system checks
+CSF_FILE="/etc/csf/csf.conf"
+
+CSF_CHECK () {
+if [ -f "$CSF_FILE" ]; then
+  echo "CSF is installed...continuing."
+else
+  echo "CSF is not installed. Please install it first and then run this script."
+  exit 1
+fi
+}
+
+CSF_CHECK
+
 #change these to zabbix server IP
 IR_IP=""
 DE_IP=""
@@ -11,8 +25,9 @@ DE_IP=""
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
 
-# Check OS version
+#Define OS type
 OSTYPE=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
+
 
 
 
