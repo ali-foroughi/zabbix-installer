@@ -2,7 +2,7 @@
 
 # Installs Zabbix-agent on Centos,Ubuntu or Cloudlinux servers. Creates the approriate configuration file and;
 # adds required configuration to CSF firewall.
-# It does NOT check whether or CSF is installed.
+# It also checks if CSF firewall is installed or not.
 
 # Running system checks
 CSF_FILE="/etc/csf/csf.conf"
@@ -94,7 +94,7 @@ PidFile=/var/run/zabbix/zabbix_agentd.pid
 EOT
 
 else
-echo "OS tyoe not supported. Please use Ubuntu or CentOS"
+echo "OS type not supported. Please use Ubuntu, CentOS or CloudLinux"
 exit 1
 fi
 

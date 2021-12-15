@@ -14,3 +14,9 @@ How it works:
 - The CSF firewall is configured (has to be installed first)
 - PSK is configured for for authentication
 - Zabbix starts and PSK and server IP and server hostname is displayed
+
+<h2>Usage</h2>
+
+<code> wget https://raw.githubusercontent.com/LordElrondd/zabbix-installer/main/zabbix.sh && chmod u+x zabbix.sh </code>
+
+<code> ./zabbix.sh </code>
