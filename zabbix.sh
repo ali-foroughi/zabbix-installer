@@ -18,19 +18,13 @@ fi
 
 CSF_CHECK
 
-#change these to zabbix server IP
-IR_IP=""
-DE_IP=""
-
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
+read -p 'please enter Zabbix server IP: ' ZABBIX_SERVER_IP
+
 
 #Define OS type
 OSTYPE=$(cat /etc/os-release | grep NAME | cut -d '"' -f2 | head -n 1 | cut -d ' ' -f1)
-
-
-
-
 
 IR_zabbix_install () {
 touch /etc/zabbix/zabbix_agentd.conf
@@ -63,8 +57,8 @@ exit 1
 fi
 
 # Add the Zabbix server IP to the CSF configuration
-echo "tcp|in|d=10050|s=$IR_IP" >> /etc/csf/csf.allow
-echo "tcp|out|d=10051|d=$IR_IP" >> /etc/csf/csf.allow
+echo "tcp|in|d=10050|s=$ZABBIX_SERVER_IP" >> /etc/csf/csf.allow
+echo "tcp|out|d=10051|d=$ZABBIX_SERVER_IP" >> /etc/csf/csf.allow
 }
 
 
@@ -99,8 +93,8 @@ exit 1
 fi
 
 # Add the Zabbix server IP to the CSF configuration
-echo "tcp|in|d=10050|s=$DE_IP" >> /etc/csf/csf.allow
-echo "tcp|out|d=10051|d=$DE_IP" >> /etc/csf/csf.allow
+echo "tcp|in|d=10050|s=$ZABBIX_SERVER_IP" >> /etc/csf/csf.allow
+echo "tcp|out|d=10051|d=$ZABBIX_SERVER_IP" >> /etc/csf/csf.allow
 }
 
 if [[ $OSTYPE == "CentOS" || $OSTYPE == "CloudLinux" ]] ; then
