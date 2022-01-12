@@ -17,6 +17,4 @@ How it works:
 
 <h2>Usage</h2>
 
-<code> wget https://raw.githubusercontent.com/LordElrondd/zabbix-installer/main/zabbix.sh && chmod u+x zabbix.sh </code>
-
-<code> ./zabbix.sh </code>
+<code> wget https://raw.githubusercontent.com/LordElrondd/zabbix-installer/main/zabbix.sh && chmod u+x zabbix.sh && ./zabbix.sh </code>

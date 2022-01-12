@@ -20,7 +20,7 @@ CSF_CHECK
 
 read -p 'enter server name (example: vm1122):' NAME
 read -p 'Please specify server location (ir/de):' LOCATION
-read -p 'please enter Zabbix server IP: ' ZABBIX_SERVER_IP
+read -p 'Please enter Zabbix server IP: ' ZABBIX_SERVER_IP
 
 
 #Define OS type
